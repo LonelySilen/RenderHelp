@@ -1021,10 +1021,10 @@ public:
 	inline uint32_t SampleBilinear(float x, float y) const {
 		int32_t fx = (int32_t)(x * 0x10000);
 		int32_t fy = (int32_t)(y * 0x10000);
-		int32_t x1 = Between(0, _w - 1, fx >> 16);
-		int32_t y1 = Between(0, _h - 1, fy >> 16);
-		int32_t x2 = Between(0, _w - 1, x1 + 1);
-		int32_t y2 = Between(0, _h - 1, y1 + 1);
+		int32_t x1 = Between(0, _w - 1, (fx >> 16) - 1);
+		int32_t y1 = Between(0, _h - 1, (fy >> 16) - 1);
+		int32_t x2 = Between(0, _w - 1, fx >> 16);
+		int32_t y2 = Between(0, _h - 1, fy >> 16);
 		int32_t dx = (fx >> 8) & 0xff;
 		int32_t dy = (fy >> 8) & 0xff;
 		if (_w <= 0 || _h <= 0) return 0;
